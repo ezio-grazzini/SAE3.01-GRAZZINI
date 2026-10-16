@@ -2,3 +2,58 @@
     * Theme Name: SAE301
     * Template: storefront
 */
+
+@layer variables;
+@import "./variables.css" layer(variables);
+
+.woocommerce-info {
+  background-color: var(--clr-green);
+}
+
+.nav-menu {
+  font-size: var(--text-lg);
+  font-family: var(--ff-sans);
+  color: var(--text-secondary);
+  padding: 0;
+  & a {
+    padding: 0rem 2rem !important;
+  }
+}
+
+.search-field{
+    background: none !important;
+    box-shadow: none !important;
+    font-family: var(--st-sans);
+    outline: none;
+}
+
+.woocommerce-products-header {
+  display: none;
+}
+
+.button {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: var(--text-base);
+  border-radius: var(--radius-base);
+  background-color: var(--bg-btn-brown);
+  font-family: var(--al-sans);
+  color: var(--clr-white);
+  &:hover {
+    background-color: var(--btn-hover);
+    color: white;
+  }
+}
+
+.woocommerce-loop-product__title {
+  font-size: var(--text-lg) !important;
+  font-family: var(--ff-sans);
+}
+
+.woocommerce-Price-amount{
+  font-size: var(--text-base);
+  font-family: var(--st-sans);
+}
