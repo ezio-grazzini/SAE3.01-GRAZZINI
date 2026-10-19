@@ -3,57 +3,345 @@
     * Template: storefront
 */
 
-@layer variables;
-@import "./variables.css" layer(variables);
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap");
+
+/* Définitions des tokens sémentiques et primitifs */
+
+:root {
+  /* ==Tokens Primitifs== */
+
+  --ff-sans: "Bebas Neue", sans-serif;
+  --st-sans: "Poppins", sans-serif;
+  --al-sans: "Afacad Flux", sans-serif;
+  /* Couleurs (clr) */
+  --clr-dark-green: #272c24;
+  --clr-green: #768a6a;
+  --clr-light-brown: #c6b59c;
+  --clr-white: #ffffff;
+  --clr-semidark-green: #4c633e;
+  --clr-black-50: #00000080;
+  --clr-dark-brown: #a9967b;
+
+  /* Border Radius */
+  --radius-6: 6px;
+
+  /* Font Size */
+  --font-size-13: 0.8125rem;
+  --font-size-20: 1.25rem;
+  --font-size-32: 2rem;
+  --font-size-49-7: 3.11rem;
+  --font-size-70: 4.375rem;
+
+  /* Spacing */
+  --spacing-1: 1px;
+  --spacing-3: 3px;
+
+    /* ==Tokens Sémantiques== */
+
+  /* Couleurs sémantiques */
+  --bg-primary: var(--clr-white);
+  --bg-secondary: var(--clr-light-brown);
+  --bg-separation: var(--clr-green);
+  --text-primary: var(--clr-dark-green);
+  --text-secondary: var(--clr-green);
+  --bg-overlay: var(--clr-black-50);
+  --btn-hover: var(--clr-dark-brown);
+  --btn-hover-green: var(--clr-semidark-green);
+  --bg-btn-brown: var(--clr-light-brown);
+  --bg-btn-green: var(--clr-green);
+  --fg-secondary: var(--clr-white);
+  --fg-border: var(--clr-white);
+  --fg-border2: var(--clr-light-brown);
+  --fg-form-outline: var(--clr-light-brown);
+  --bg-footer: var(--clr-dark-green);
+
+  /* Bordures sémantiques */
+  --radius-base: var(--radius-6);
+
+  /* Typographie sémantique */
+  --text-sm: var(--font-size-13);
+  --text-base: var(--font-size-20);
+  --text-lg: var(--font-size-32);
+  --text-xl: var(--font-size-49-7);
+  --text-xxl: var(--font-size-70);
+
+  /* Espacement sémantique */
+  --space-xs: var(--spacing-1);
+  --space-sm: var(--spacing-3);
+}
+
+/* Header */
+
+.related > h2:first-child,
+.upsells > h2:first-child,
+.woocommerce-tabs .panel h2:first-of-type,
+h2 {
+  font-family: var(--ff-sans);
+  font-size: var(--text-xl);
+}
 
 .woocommerce-info {
   background-color: var(--clr-green);
 }
 
+/* Navigation */
+
 .nav-menu {
-  font-size: var(--text-lg);
-  font-family: var(--ff-sans);
-  color: var(--text-secondary);
   padding: 0;
-  & a {
-    padding: 0rem 2rem !important;
-  }
+  font-family: var(--ff-sans);
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
 }
 
-.search-field{
-    background: none !important;
-    box-shadow: none !important;
-    font-family: var(--st-sans);
-    outline: none;
+.main-navigation ul.menu > li > a,
+.main-navigation ul.nav-menu > li > a {
+  padding: 0rem 2rem;
+}
+
+/* Barre de recherche */
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+textarea,
+.input-text {
+  font-family: var(--st-sans);
+  background: none;
+  box-shadow: none;
+  outline: none;
 }
 
 .woocommerce-products-header {
   display: none;
 }
 
+/* Boutons */
+
 .button {
   padding: 0.5rem 1.5rem;
-  border: none;
-  cursor: pointer;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: var(--text-base);
-  border-radius: var(--radius-base);
-  background-color: var(--bg-btn-brown);
   font-family: var(--al-sans);
+  font-size: var(--text-base);
+  font-weight: 600;
+  text-transform: uppercase;
   color: var(--clr-white);
+  background-color: var(--bg-btn-brown);
+  border: none;
+  border-radius: var(--radius-base);
+  cursor: pointer;
+
   &:hover {
-    background-color: var(--btn-hover);
     color: white;
+    background-color: var(--btn-hover);
   }
 }
 
-.woocommerce-loop-product__title {
-  font-size: var(--text-lg) !important;
+ul.products li.product .woocommerce-loop-product__title,
+ul.products li.product .woocommerce-loop-category__title,
+ul.products li.product .wc-block-grid__product-title,
+ul.products li.product .wc-block-grid__product-title > a:not(.has-font-size),
+ul.products .wc-block-grid__product .woocommerce-loop-product__title,
+ul.products .wc-block-grid__product .woocommerce-loop-category__title,
+ul.products .wc-block-grid__product .wc-block-grid__product-title,
+ul.products
+  .wc-block-grid__product
+  .wc-block-grid__product-title
+  > a:not(.has-font-size),
+.wc-block-grid__products li.product .woocommerce-loop-product__title,
+.wc-block-grid__products li.product .woocommerce-loop-category__title,
+.wc-block-grid__products li.product .wc-block-grid__product-title,
+.wc-block-grid__products
+  li.product
+  .wc-block-grid__product-title
+  > a:not(.has-font-size),
+.wc-block-grid__products
+  .wc-block-grid__product
+  .woocommerce-loop-product__title,
+.wc-block-grid__products
+  .wc-block-grid__product
+  .woocommerce-loop-category__title,
+.wc-block-grid__products .wc-block-grid__product .wc-block-grid__product-title,
+.wc-block-grid__products
+  .wc-block-grid__product
+  .wc-block-grid__product-title
+  > a:not(.has-font-size) {
+  font-family: var(--ff-sans);
+  font-size: var(--text-lg);
+}
+
+/* Indicateur de prix */
+
+.woocommerce-Price-amount {
+  font-family: var(--st-sans);
+  font-size: var(--text-base);
+}
+
+/* Modification du style pour le composant séparation rajouté par le thème */
+
+.eg-separation {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem;
+  color: var(--fg-secondary);
+  background-color: var(--bg-separation);
+
+  /* Ajout de l'élement décoratif pattern avec before */
+  &::before {
+    position: absolute;
+    top: 2rem;
+    right: 0;
+    display: block;
+    width: 20rem;
+    height: 6rem;
+    background-image: url("./assets/pattern.png");
+    background-repeat: no-repeat;
+    content: "";
+  }
+}
+
+.separation__title {
+  margin: 0;
+  padding: 0;
+  font-family: var(--ff-sans);
+  font-size: var(--text-xl);
+  letter-spacing: var(--space-sm);
+  color: var(--fg-secondary);
+}
+
+.separation__description {
+  margin: 0;
+  padding: 0;
+  font-family: var(--st-sans);
+  font-size: var(--text-base);
+  border-bottom: var(--fg-border) solid 0.15rem;
+}
+
+/* Changement des images produits pour qu'elle prennent toute la taille de la div sans déformer l'image */
+
+.woocommerce div.product div.images .woocommerce-product-gallery__wrapper,
+.woocommerce div.product div.images .woocommerce-product-gallery__image,
+.woocommerce div.product div.images img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Changement du style des informations produits*/
+
+.summary {
+  padding: 1rem;
+  color: var(--fg-secondary);
+  background-color: var(--bg-separation);
+
+  & .product_title {
+    margin: 0;
+    padding: 0;
+    font-family: var(--ff-sans);
+    font-size: var(--text-xl);
+    letter-spacing: var(--space-sm);
+    color: var(--fg-secondary);
+    border-bottom: var(--fg-border) solid 0.15rem;
+  }
+
+  & .single_add_to_cart_button {
+    background-color: var(--bg-btn-brown);
+
+    &:hover {
+      background-color: var(--btn-hover);
+    }
+  }
+
+  & .input-text {
+    height: auto;
+    background-color: var(--bg-primary);
+    border: solid 0.1rem var(--fg-border2);
+    border-radius: var(--radius-base);
+    box-shadow: none;
+  }
+
+  & .posted_in a {
+    color: var(--fg-secondary);
+  }
+}
+
+/* Modification du style des tabs */
+
+.woocommerce-Tabs h2 {
   font-family: var(--ff-sans);
 }
 
-.woocommerce-Price-amount{
-  font-size: var(--text-base);
+.slateMenuDishGridContentIngredients {
   font-family: var(--st-sans);
+}
+
+/* Modification du style du footer */
+
+.site-footer {
+  color: var(--fg-secondary);
+  background-color: var(--bg-footer);
+}
+
+.site-footer a:not(.button):not(.components-button) {
+  color: var(--fg-secondary);
+}
+
+.tabs {
+  padding: 1rem;
+  color: var(--fg-secondary);
+  background-color: var(--bg-separation);
+
+  & a {
+    color: var(--fg-secondary);
+  }
+}
+
+/* Changement de la couleur et police du bandeau quand il n'y a pas de note*/
+
+.woocommerce-noreviews {
+  font-family: var(--st-sans);
+  background-color: var(--bg-secondary);
+}
+
+/* Style de l'input */
+.button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.button,
+.wc-block-grid__products .wc-block-grid__product .wp-block-button__link,
+.added_to_cart {
+  padding: 0.5rem 1.5rem;
+  font-family: var(--al-sans);
+  font-size: var(--text-base);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--clr-white);
+  background-color: var(--bg-btn-green);
+  border: none;
+  border-radius: var(--radius-base);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--fg-secondary);
+    background-color: var(--btn-hover-green);
+  }
+}
+
+/* Style pour rajouter un avis */
+.comment-respond {
+  color: var(--fg-secondary);
+  background-color: var(--bg-secondary) !important; /* Utilisation de !important car l'élement surchargé était un identifiant javascript */
+
+  & textarea {
+    background-color: var(--bg-primary);
+    border-radius: var(--border-base);
+  }
 }
