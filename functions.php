@@ -45,4 +45,14 @@ add_action('woocommerce_single_product_summary', function(){
             echo '<p class="cp__nom">' . esc_html($titre) . '<span class="cp__span">' . ' : ' . nl2br(esc_html($valeur)) . '</span>' . '</p>';
         }
 }, 5);
+
+function show_alert(){
+    if(get_field('instructions_pour_le_retrait', 'option')){
+        $msg = '<pre>' . esc_html(get_field('msg','option')) . '</pre>';
+        return $msg;
+    }
+    add_action('wp_body_open', 'show_alert');
+}
 ?>
+
+
