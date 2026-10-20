@@ -455,9 +455,22 @@ input[type="submit"],
 /* Menu Sidebar */
 .wc-block-components-sidebar{
   padding: 1rem;
+  border: none;
   font-family: var(--st-sans);
   background-color: var(--bg-separation);
   color: var(--text-light);
+}
+
+.wp-block-woocommerce-cart-order-summary-heading-block,
+.wp-block-woocommerce-cart-order-summary-coupon-form-block,
+.wp-block-woocommerce-cart-order-summary-totals-block,
+.wc-block-components-totals-item{
+  border: none !important;
+}
+
+.wc-block-cart .wc-block-cart__totals-title{
+  font-size: var(--text-lg);
+  font-family: var(--ff-sans);
 }
 
 /* Button Recap */
