@@ -1,4 +1,7 @@
 <?php
+
+// Séparation des produits en fonction des catégories existante sur woocommerce.
+
 function sections_categories_shortcode() {
     $cats = get_terms([
         'taxonomy'   => 'product_cat',
@@ -21,6 +24,7 @@ function sections_categories_shortcode() {
 }
 add_shortcode('sections_categories', 'sections_categories_shortcode');
 
+// Création du filtre et de l'utilisation du template
 add_filter('template_include', function ($template) {
     if (function_exists('is_shop') && is_shop()) {
         $custom = get_stylesheet_directory() . '/sectionboutique.php';
@@ -30,4 +34,15 @@ add_filter('template_include', function ($template) {
     }
     return $template;
 }, 99);
+
+// Champs Personnalisées (Composition, Allergènes, Valeurs Nutritionnelles).
+
+add_action('woocommerce_single_product_summary', function(){
+    foreach (['composition' => 'Composition','allergenes' => 'Allergènes','valeurs_nutritionnelles' => "Valeurs nutritionnelles"] as $nom => $titre)
+        if ($valeur = get_field($nom)){
+            // Si c'est une liste de case à coché, les éléments seront collés entre eux et séparer par une virgule
+            if (is_array($valeur)) $valeur = implode (', ', $valeur);      
+            echo '<p class="cp__nom">' . esc_html($titre) . '<span class="cp__span">' . ' : ' . nl2br(esc_html($valeur)) . '</span>' . '</p>';
+        }
+}, 5);
 ?>
