@@ -527,3 +527,29 @@ input[type="submit"],
     font-size: var(--text-base);
   }
 }
+
+/* Page compte */
+
+.woocommerce-MyAccount-navigation{
+  padding: 1rem;
+  background-color: var(--bg-secondary);
+  font-family: var(--ff-sans);
+  color: var(--text-light) !important;
+
+  & .woocommerce-MyAccount-navigation-link{
+          color: var(--text-light) !important;
+      border: none !important;
+      outline: none !important;
+  }
+  & a{
+      color: var(--text-light) !important;
+      border: none !important;
+      outline: none !important;
+
+  }
+}
+
+.woocommerce-MyAccount-content{
+  font-family: var(--st-sans);
+  color: var(--text-primary);
+}
