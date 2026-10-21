@@ -534,7 +534,7 @@ input[type="submit"],
   padding: 1rem;
   background-color: var(--bg-secondary);
   font-family: var(--ff-sans);
-  color: var(--text-light) !important;
+  color: var(--text-light);
 
   & .woocommerce-MyAccount-navigation-link{
           color: var(--text-light) !important;
@@ -552,4 +552,14 @@ input[type="submit"],
 .woocommerce-MyAccount-content{
   font-family: var(--st-sans);
   color: var(--text-primary);
+}
+
+.woocommerce-Input{
+    border: var(--fg-border2) solid 0.1rem !important;
+    border-radius: var(--radius-6);
+}
+
+.show-password-input{
+  border-radius: var(--radius-6);
+  background-color: var(--bg-btn-brown);
 }
