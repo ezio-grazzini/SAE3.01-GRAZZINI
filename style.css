@@ -469,6 +469,7 @@ input[type="submit"],
 }
 
 .wc-block-cart .wc-block-cart__totals-title{
+  border-bottom: var(--fg-border) solid 0.15rem !important;
   font-size: var(--text-lg);
   font-family: var(--ff-sans);
 }
@@ -508,5 +509,21 @@ input[type="submit"],
 
   & .wc-block-components-order-summary-item__quantity{
     background-color: var(--bg-secondary);
+  }
+}
+
+.eg-instructions{
+  padding: 1rem;
+  font-family: var(--st-sans);
+  background-color: var(--bg-secondary);
+  color: var(--text-light);
+  & .eg-instructions__title{
+    font-size: var(--text-lg);
+    font-family: var(--ff-sans);
+     color: var(--text-light);
+
+  }
+  & .eg-instructions__message{
+    font-size: var(--text-base);
   }
 }

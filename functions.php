@@ -46,13 +46,23 @@ add_action('woocommerce_single_product_summary', function(){
         }
 }, 5);
 
-function show_alert(){
-    if(get_field('instructions_pour_le_retrait', 'option')){
-        $msg = '<pre>' . esc_html(get_field('msg','option')) . '</pre>';
-        return $msg;
-    }
-    add_action('wp_body_open', 'show_alert');
-}
-?>
+// Affichage des instructions pour le retrait sur la page commande
 
+add_filter( 'render_block', 'show_alert', 10, 2 );
+function show_alert( $contenu, $block ) {
+    if ( $block['blockName'] !== 'woocommerce/checkout' ) {
+        return $contenu;
+    }
+
+    $instruction = get_field( 'instructions_pour_le_retrait', 'option' );
+
+    if ( ! $instruction ) {
+        return $contenu;
+    }
+
+    return 
+    '<div class="eg-instructions">' .
+    '<h3 class="eg-instructions__title">Instructions pour le retrait</h3>' .
+    '<p class="eg-instructions__message">' . esc_html( $instruction ) . '</p>' . '</div>' . $contenu;
+}
 
