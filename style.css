@@ -576,3 +576,46 @@ input[type="submit"],
     color: var(--fg-secondary);
   }
 }
+
+/* Page équipe custom */
+
+.eg-equipe{
+  color: var(--text-primary);
+  & .eg-equipe__list{
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    gap: 10rem;
+    & .list__item{
+      & .item__link{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        & .link__poste{
+          font-family: var(--st-sans);
+        }
+      }
+    }
+  }
+}
+
+/* Page membre équipe custom */
+
+.eg-membre{
+  display: flex;
+  color: var(--text-primary);
+  font-family: var(--st-sans);
+  & img{
+    max-width: 100%;
+    width: 25rem;
+    height: auto;
+  }
+
+  & .info__poste{
+    font-size: var(--text-lg);
+    letter-spacing: var(--space-xs);
+    font-family: var(--ff-sans);
+  }
+}
