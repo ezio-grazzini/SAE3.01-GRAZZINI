@@ -66,3 +66,4 @@ function show_alert( $contenu, $block ) {
     '<p class="eg-instructions__message">' . esc_html( $instruction ) . '</p>' . '</div>' . $contenu;
 }
 
+// Système de cancel rajouté avec le plugin WC Cancel Order
