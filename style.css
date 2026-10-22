@@ -563,3 +563,16 @@ input[type="submit"],
   border-radius: var(--radius-6);
   background-color: var(--bg-btn-brown);
 }
+
+/* Codes promos */
+
+.wc-block-components-form .wc-block-components-text-input input[type=date],.wc-block-components-form .wc-block-components-text-input input[type=email],.wc-block-components-form .wc-block-components-text-input input[type=number],.wc-block-components-form .wc-block-components-text-input input[type=password],.wc-block-components-form .wc-block-components-text-input input[type=tel],.wc-block-components-form .wc-block-components-text-input input[type=text],.wc-block-components-form .wc-block-components-text-input input[type=url],.wc-block-components-text-input input[type=date],.wc-block-components-text-input input[type=email],.wc-block-components-text-input input[type=number],.wc-block-components-text-input input[type=password],.wc-block-components-text-input input[type=tel],.wc-block-components-text-input input[type=text],.wc-block-components-text-input input[type=url] {
+    height: 100%;
+    border: none;
+}
+
+.wc-block-components-validation-error{
+  & span{
+    color: var(--fg-secondary);
+  }
+}
