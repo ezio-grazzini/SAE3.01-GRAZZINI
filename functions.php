@@ -66,6 +66,58 @@ function show_alert( $contenu, $block ) {
     '<p class="eg-instructions__message">' . esc_html( $instruction ) . '</p>' . '</div>' . $contenu;
 }
 
-// Système de cancel rajouté avec le plugin WC Cancel Order
+function obv_get_complementaires( $product_id ) {
+    $ids = get_field( 'produits_complementaires', $product_id );
+    if ( empty( $ids ) ) {
+        return array();
+    }
+    return array_map( 'intval', $ids );
+}
 
-// Système de promocode rajouté avec woocommerce
+function obv_afficher_suggestions( $ids, $titre ) {
+    if ( empty( $ids ) ) {
+        return;
+    }
+    $requete = new WP_Query( array(
+        'post_type'      => 'product',
+        'post__in'       => $ids,
+        'orderby'        => 'post__in',
+        'posts_per_page' => 4,
+    ) );
+    if ( $requete->have_posts() ) {
+        echo '<section class="suggestions-complementaires">';
+        echo '<h2>' . esc_html( $titre ) . '</h2>';
+        woocommerce_product_loop_start();
+        while ( $requete->have_posts() ) {
+            $requete->the_post();
+            wc_get_template_part( 'content', 'product' );
+        }
+        woocommerce_product_loop_end();
+        echo '</section>';
+        wp_reset_postdata();
+    }
+}
+
+add_action( 'woocommerce_after_single_product_summary', function () {
+    obv_afficher_suggestions(
+        obv_get_complementaires( get_the_ID() ),
+        'Pour compléter votre achat'
+    );
+}, 15 );
+
+add_shortcode( 'suggestions_panier', function () {
+    if ( ! WC()->cart || WC()->cart->is_empty() ) {
+        return '';
+    }
+    $ids         = array();
+    $dans_panier = array();
+    foreach ( WC()->cart->get_cart() as $ligne ) {
+        $dans_panier[] = $ligne['product_id'];
+        $ids = array_merge( $ids, obv_get_complementaires( $ligne['product_id'] ) );
+    }
+    $ids = array_values( array_diff( array_unique( $ids ), $dans_panier ) );
+
+    ob_start();
+    obv_afficher_suggestions( $ids, 'Vous aimerez aussi' );
+    return ob_get_clean();
+} );

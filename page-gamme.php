@@ -1,10 +1,4 @@
 <?php
-/**
- * Template Name: Page Gammes (Tous les produits)
- *
- * Ce modèle affiche tous les produits qui possèdent au moins un terme dans la taxonomie 'gamme'.
- */
-
 get_header();
 ?>
 
