@@ -73,6 +73,10 @@
   --space-sm: var(--spacing-3);
 }
 
+.col-full{
+  max-width: none;
+}
+
 /* Header */
 
 .related > h2:first-child,
@@ -585,6 +589,8 @@ input[type="submit"],
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
+    justify-content: center;
+    align-items: center;
     gap: 10rem;
     & .list__item{
       & .item__link{
@@ -618,4 +624,8 @@ input[type="submit"],
     letter-spacing: var(--space-xs);
     font-family: var(--ff-sans);
   }
+}
+
+.products{
+  display: flex !important;
 }

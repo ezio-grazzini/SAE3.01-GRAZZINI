@@ -67,3 +67,5 @@ function show_alert( $contenu, $block ) {
 }
 
 // Système de cancel rajouté avec le plugin WC Cancel Order
+
+// Système de promocode rajouté avec woocommerce
